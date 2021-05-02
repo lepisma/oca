@@ -5,4 +5,31 @@
 Org Capture Anywhere (~oca~) allows you to use Org Capture for acting on /captures/
 in non Org files.
 
-TODO: Write usage pattern
+Many times I need to capture structured text items that have to go in places
+that are not Org mode files. As an example, to create tasks in [[https://www.atlassian.com/software/jira][Jira]] or [[https://trello.com/][Trello]].
+Org mode provides [[https://orgmode.org/manual/Capture.html][a powerful mechanism]] to capture items. This package provides
+simple functions to extend Org capture's final destination.
+
+Once installed, call ~oca-setup~ for setting up capture hooks. The define your
+capture workflow by writing a template and specifying a /push/ function. The push
+function takes AST of captured Org item via ~org-element~ API and does whatever it
+wants with it.
+
+Here is an example to log lines an SQLite database. We first define a push
+function that takes a list item and pushes to our database.
+
+#+begin_src emacs-lisp
+  (defun oca-push-my-db (element)
+    (let ((text (org-element-property :raw-value element)))
+      (call-process "sqlite3" nil nil nil
+                    "db.sqlite3" (format "insert into data (line) values (\"%s\")" text))))
+#+end_src
+
+#+RESULTS:
+: oca-push-my-db
+
+#+begin_src emacs-lisp
+  (setq org-capture-templates
+        '(("s" "Capture to SQLite" entry (function (lambda () (oca-visit #'oca-push-my-db)))
+           "* %?")))
+#+end_src
