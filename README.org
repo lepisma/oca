@@ -1,4 +1,6 @@
 #+TITLE: oca
+[[tag][
+file:https://img.shields.io/github/v/tag/lepisma/oca.svg]]
 
 Org Capture Anywhere (~oca~) allows you to use Org Capture for acting on /captures/
 in non Org files.
