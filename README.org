@@ -10,13 +10,13 @@ that are not Org mode files. For example, to create tasks in [[https://www.atlas
 mode provides [[https://orgmode.org/manual/Capture.html][a powerful mechanism]] to capture items. This package provides
 simple functions to extend Org capture's final destination.
 
-Once installed, call ~oca-setup~ for setting up capture hooks. The define your
+Once installed, call ~oca-setup~ for setting up capture hooks. Then define your
 capture workflow by writing a template and specifying a /push/ function. The push
 function takes AST of captured Org item via ~org-element~ API and does whatever it
 wants with it.
 
-Here is an example to log lines an SQLite database. We first define a push
-function that takes a list item and pushes to our database.
+Here is an example to log lines in an SQLite database. We first define a push
+function that takes an headline entry and pushes the title to our database.
 
 #+begin_src emacs-lisp
   (defun oca-push-my-db (element)
@@ -28,8 +28,13 @@ function that takes a list item and pushes to our database.
 #+RESULTS:
 : oca-push-my-db
 
+Then write a capture template using ~oca-visit~ and the push function defined
+above.
+
 #+begin_src emacs-lisp
   (setq org-capture-templates
         '(("s" "Capture to SQLite" entry (function (lambda () (oca-visit #'oca-push-my-db)))
            "* %?")))
 #+end_src
+
+Now capturing items using ~C-c c s~ will put the line in the database.
