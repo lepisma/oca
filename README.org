@@ -6,8 +6,8 @@ Org Capture Anywhere (~oca~) allows you to use Org Capture for acting on /captur
 in non Org files.
 
 Many times I need to capture structured text items that have to go in places
-that are not Org mode files. As an example, to create tasks in [[https://www.atlassian.com/software/jira][Jira]] or [[https://trello.com/][Trello]].
-Org mode provides [[https://orgmode.org/manual/Capture.html][a powerful mechanism]] to capture items. This package provides
+that are not Org mode files. For example, to create tasks in [[https://www.atlassian.com/software/jira][Jira]] or [[https://trello.com/][Trello]]. Org
+mode provides [[https://orgmode.org/manual/Capture.html][a powerful mechanism]] to capture items. This package provides
 simple functions to extend Org capture's final destination.
 
 Once installed, call ~oca-setup~ for setting up capture hooks. The define your
