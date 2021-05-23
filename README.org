@@ -16,7 +16,7 @@ function takes AST of captured Org item via ~org-element~ API and does whatever 
 wants with it.
 
 Here is an example to log lines in an SQLite database. We first define a push
-function that takes an headline entry and pushes the title to our database.
+function that takes a headline entry and pushes the title to our database.
 
 #+begin_src emacs-lisp
   (defun oca-push-my-db (element)
