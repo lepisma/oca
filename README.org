@@ -1,3 +1,7 @@
+#+begin_quote
+Development for this project has moved to sourcehut [[https://git.sr.ht/~lepisma/oca][here]]. This repository is now in a read-only state.
+#+end_quote
+
 #+TITLE: oca
 
 [[tag][file:https://img.shields.io/github/v/tag/lepisma/oca.svg?style=flat-square]]
